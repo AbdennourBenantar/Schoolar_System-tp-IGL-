@@ -9,6 +9,7 @@ pylint-django = "*"
 [packages]
 django = "*"
 djangorestframework = "*"
+pylint-django = "*"
 
 [requires]
 python_version = "3.6"

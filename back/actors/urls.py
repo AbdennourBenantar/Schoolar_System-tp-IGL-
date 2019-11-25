@@ -1,10 +1,10 @@
-from django.contrib import path
-
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('',views.ListActors.as_view()),
-    path('<>')
+    path('students/',views.student_list),
+    #path('<>')
 
-    #api for classes 
+    #api for Groups 
 
 ]
