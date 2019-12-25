@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import Typical from 'react-typical';
 import ActCard from './Components/ActeursCard';
-import Login from './Components/login_compo/login'
+import Login from './Components/login_compo/login';
+import {BrowserRouter,Route,Switch,Link} from 'react-router-dom';
+import Etudiant from './Components/Etudiant/Etudiant';
+import {ProtectedRouter} from './Components/ProtectedRouter';
+
 
 const acteurs=[
   {type:'Etudiant'},
@@ -24,10 +28,10 @@ class App extends Component {
 
   render(){
   return (
-    <div className="App">
-      <Login/>
-    
-      </div>
+   <BrowserRouter>
+    <Route className='page' exact path='/' component={Login}/>
+    <ProtectedRouter component={Etudiant} className='page' exact path='/etudiant'/>
+  </BrowserRouter>
   );};
 }
 

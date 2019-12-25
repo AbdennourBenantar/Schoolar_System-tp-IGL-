@@ -1,7 +1,7 @@
 import React from 'react' ;
 import Sidebar from './SidebarEtudiant';
 
-import '../App.css';
+import '../style.css';
 import { FaRegLightbulb, FaHandPointer, FaPeace, FaHandPeace } from 'react-icons/fa';
 export default class Etudiant extends React.Component{
     render(){

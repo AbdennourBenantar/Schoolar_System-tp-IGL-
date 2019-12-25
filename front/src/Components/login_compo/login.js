@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import "./login_style.css";
 import logo from "./grad.png";
+import auth from './auth'
 
 class Login extends Component {
   constructor(props) {
     super();
+    
     this.state = {
       name: "",
       password: ""
@@ -17,6 +19,10 @@ class Login extends Component {
   };
   log_submit(e) {
     e.preventDefault();
+    auth.login(()=>{
+      this.props.history.push('./etudiant')
+    })
+    console.log(auth.isAuthentificated);
     console.log("hello world it is searj");
     console.log(this.state);
   }
