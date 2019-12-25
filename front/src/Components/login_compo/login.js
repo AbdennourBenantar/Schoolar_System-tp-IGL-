@@ -29,6 +29,7 @@ class Login extends Component {
 
   render() {
     return (
+      <div className="login-page">
       <div className="wrapper fadeInDown">
         <div id="formContent">
           <img className="fadeIn first" src={logo} id="icon" alt="User Icon" />
@@ -61,6 +62,7 @@ class Login extends Component {
             />
           </form>
         </div>
+      </div>
       </div>
     );
   }

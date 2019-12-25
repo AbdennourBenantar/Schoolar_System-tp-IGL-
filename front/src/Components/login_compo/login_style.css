@@ -2,19 +2,7 @@
 
 /* BASIC */
 
-html {
-  background-color: #56baed;
-  background-image: url("../../assets/Bgs/bg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+
 
 body {
   font-family: "Poppins", sans-serif;
@@ -304,4 +292,10 @@ input[type="password"].placeholder {
 
 * {
   box-sizing: border-box;
+}
+.login-page{
+  background-image: url("../../assets/Bgs/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 }
