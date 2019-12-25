@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Acceuil';
-import Sidebar from './Components/Sidebar';
+import Etudiant from './Etudiant/Etudiant';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Sidebar />, document.getElementById('root'));
+ReactDOM.render(<Etudiant />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
