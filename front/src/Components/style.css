@@ -1,3 +1,6 @@
+@import '~react-agenda/build/styles.css';
+@import '~react-datetime/css/react-datetime.css';
+
 .App {
     text-align: center;
   }
@@ -88,24 +91,24 @@
     flex-direction: column;
     align-items: center;
     width: 99%;
-    margin-bottom: 15%;
+    margin-bottom: 25%;
     transition: all 0.5s;
-    
+    color: white;
   }
   .sidebar-Item:hover{
    color: cadetblue;
    transition: all 1s;
    cursor: grab;
   }
-  a{
+  #esi-link{
    
     font-size: 12px;
     color: rgb(53, 125, 128);
     transition: all 1s;
     text-decoration: none;
-    margin-top: 1px;
+    padding-top: -5px;
   }
-  a:hover{
+  #esi-link:hover{
     color: white;
     transition: all 1s;
   }
@@ -212,4 +215,12 @@
     top: 200px;
     size: 100px;
   }
-  
+ 
+  a{
+  text-decoration: none;
+  color: white;
+  }
+  #agenda-container{
+    width: 80%;
+    transition: all 1s;
+  }
