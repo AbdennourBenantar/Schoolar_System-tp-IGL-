@@ -3,8 +3,9 @@ import Sidebar from './SidebarEtudiant';
 import '../style.css';
 import { FaRegLightbulb, FaHandPointer, FaPeace, FaHandPeace } from 'react-icons/fa';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { ReactAgenda , ReactAgendaCtrl , guid ,  Modal } from 'react-agenda';
-import moment from 'moment';
+import { ReactAgenda , guid  } from 'react-agenda';
+import MaterialTable from 'material-table';
+
 
 
 require('moment/locale/fr.js');
@@ -94,6 +95,7 @@ var items = [
    
   ];
 export default class Etudiant extends React.Component{  
+  
     constructor(props){
         super(props);
           this.state = {
@@ -104,13 +106,30 @@ export default class Etudiant extends React.Component{
             locale:"dz",
             rowsPerHour:2,
             numberOfDays:5,
-            startDate: new Date()
+            startDate: new Date(),
+            columns: [
+              { title: 'Nom du module', field: 'name',headerStyle: {
+                backgroundColor:"CadetBlue",
+                color:"White"
+              } },
+              { title: 'Enseignant', field: 'teacher',headerStyle: {
+                backgroundColor:"CadetBlue",
+                color:"White"
+              }},
+              { title: 'Coefficient', field: 'coeff', type: 'numeric' ,headerStyle: {
+                backgroundColor:"CadetBlue",
+                color:"White"
+              }},
+            ],
+            data: [
+              { name: 'Systemes centralisés', teacher: 'BOUZAR L', coeff: 5 },
+              { name: 'Introduction au génies logiciels', teacher: 'Mostefai', coeff: 5 },
+            ],
           }
           this.handleCellSelection = this.handleCellSelection.bind(this)
           this.handleItemEdit = this.handleItemEdit.bind(this)
-          this.handleRangeSelection = this.handleRangeSelection.bind(this)
-        }
-       
+          this.handleRangeSelection = this.handleRangeSelection.bind(this) 
+        }      
       handleCellSelection(item){
         console.log('handleCellSelection',item)
       }
@@ -120,7 +139,6 @@ export default class Etudiant extends React.Component{
       handleRangeSelection(item){
         console.log('handleRangeSelection', item)
       }
-
     render(){
         return(
             <div className="Dash">
@@ -169,7 +187,50 @@ export default class Etudiant extends React.Component{
                             </div>
                         </Route>
                         <Route path="/listeModules">
-                            <div>Liste de modules</div>
+                            <div id="liste-module-table-container">
+                            <MaterialTable
+                            title="Liste des modules"
+                            columns={this.state.columns}
+                            data={this.state.data}
+                            editable={{
+                              onRowAdd: newData =>
+                              new Promise(resolve => {
+                                setTimeout(() => {
+                                  resolve();
+                                  this.setState(prevState => {
+                                    const data = [...prevState.data];
+                                    data.push(newData);
+                                    return { ...prevState, data };
+                                  });
+                                }, 600);
+                              }),
+                              onRowUpdate: (newData, oldData) =>
+                                new Promise(resolve => {
+                                setTimeout(() => {
+                                resolve();
+                                if (oldData) {
+                                  this.setState(prevState => {
+                                    const data = [...prevState.data];
+                                    data[data.indexOf(oldData)] = newData;
+                                    return { ...prevState, data };
+                                  });
+                                }
+                                }, 600);
+                              }),
+                              onRowDelete: oldData =>
+                              new Promise(resolve => {
+                                setTimeout(() => {
+                                  resolve();
+                                  this.setState(prevState => {
+                                    const data = [...prevState.data];
+                                    data.splice(data.indexOf(oldData), 1);
+                                    return { ...prevState, data };
+                                  });
+                                }, 600);
+                              }),
+                              }}
+                            />
+                            </div>
                         </Route>
                     </Switch>
                 </BrowserRouter>
@@ -177,3 +238,5 @@ export default class Etudiant extends React.Component{
         );
     }
 }
+
+
