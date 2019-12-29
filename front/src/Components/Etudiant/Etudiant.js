@@ -108,18 +108,9 @@ export default class Etudiant extends React.Component{
             numberOfDays:5,
             startDate: new Date(),
             columns: [
-              { title: 'Nom du module', field: 'name',headerStyle: {
-                backgroundColor:"CadetBlue",
-                color:"White"
-              } },
-              { title: 'Enseignant', field: 'teacher',headerStyle: {
-                backgroundColor:"CadetBlue",
-                color:"White"
-              }},
-              { title: 'Coefficient', field: 'coeff', type: 'numeric' ,headerStyle: {
-                backgroundColor:"CadetBlue",
-                color:"White"
-              }},
+              { title: 'Nom du module', field: 'name' },
+              { title: 'Enseignant', field: 'teacher'},
+              { title: 'Coefficient', field: 'coeff', type: 'numeric'},
             ],
             data: [
               { name: 'Systemes centralisés', teacher: 'BOUZAR L', coeff: 5 },

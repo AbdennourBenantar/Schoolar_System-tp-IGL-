@@ -20,11 +20,9 @@ class Login extends Component {
   log_submit(e) {
     e.preventDefault();
     auth.login(()=>{
-      this.props.history.push('./etudiant')
+      this.props.history.push('./admin')
     })
-    console.log(auth.isAuthentificated);
-    console.log("hello world it is searj");
-    console.log(this.state);
+    
   }
 
   render() {

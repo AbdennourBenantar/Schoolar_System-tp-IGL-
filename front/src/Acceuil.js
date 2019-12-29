@@ -5,6 +5,7 @@ import ActCard from './Components/ActeursCard';
 import Login from './Components/login_compo/login';
 import {BrowserRouter,Route,Switch,Link} from 'react-router-dom';
 import Etudiant from './Components/Etudiant/Etudiant';
+import Admin from './Components/Admin/Admin';
 import {ProtectedRouter} from './Components/ProtectedRouter';
 
 
@@ -30,7 +31,7 @@ class App extends Component {
   return (
    <BrowserRouter>
     <Route className='page' exact path='/' component={Login}/>
-    <ProtectedRouter component={Etudiant} className='page' exact path='/etudiant'/>
+    <ProtectedRouter component={Admin} className='page' exact path='/admin'/>
   </BrowserRouter>
   );};
 }
