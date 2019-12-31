@@ -1,0 +1,174 @@
+///////////the user create : 
+POST http://127.0.0.1:8000/createUserv2/
+
+request : 
+		{
+		"username": "abdennour2",
+		"password" : "ddddd",
+		"email": "dfdfdf@gmail.vom",
+		"group": 9
+
+		}
+
+result when ACCEPTED : 
+
+		200 OK
+		{
+		  "id": 20,
+		  "modules": [],
+		  "user": 20,
+		  "group": 9
+		}
+
+
+
+///////////////////   login 
+POST http://127.0.0.1:8000/login/
+
+*-bad request exemple : 
+POST 
+		{
+		"username": "abdou",
+		"password" : "django123"
+		}  
+result : 
+		{
+		  "error": "wrong stuff (passwd or username) plz contact azouaw"
+		}
+//
+*- a good request results : 
+request : POST 
+		{
+		"username": "abdou",
+		"password" : "django123"
+		}  
+
+result
+		{
+		  "id": 2,
+		  "modules": [
+		    {
+		      "id": 1,
+		      "name": "cyc",
+		      "coef": 3,
+		      "teacher": "uppgfgsg",
+		      "note": 15,
+		      "student": 2
+		    },
+		    {
+		      "id": 2,
+		      "name": "cyc",
+		      "coef": 5,
+		      "teacher": "gfgsg",
+		      "note": 0,
+		      "student": 2
+		    },
+		    {
+		      "id": 3,
+		      "name": "cyc",
+		      "coef": 4,
+		      "teacher": "gfgsg",
+		      "note": 0,
+		      "student": 2
+		    }
+		  ],
+		  "user": 2,
+		  "group": 1
+		}
+
+
+
+////////
+createModule  :
+POST 
+http://127.0.0.1:8000/createModule/
+ex :
+		{
+		  "coef": 5,
+		  "name": "cyc",
+		"teacher" : "gfgsg",
+		"student" : 2 
+		}
+
+/////////////////
+updateModule 
+
+http://127.0.0.1:8000/updateModule/<int:pk>/
+
+
+ex 1:
+GET   http://127.0.0.1:8000/updateModule/1/
+received :
+		 {
+		  "id": 1,
+		  "name": "cyc",
+		  "coef": 4,
+		  "teacher": "uppgfgsg",
+		  "note": 15,
+		  "student": 2
+		}
+
+ex 2 :
+PATCH http://127.0.0.1:8000/updateModule/1/
+sent : 
+		{
+		  "coef": 3,                 //change 
+		  "name": "cyc",
+		"teacher" : "uppgfgsg",
+		"student" : 2 
+		}
+
+received : 
+		{
+		  "id": 1,
+		  "name": "cyc",    
+		  "coef": 3,                //changed !
+		  "teacher": "uppgfgsg",
+		  "note": 15,
+		  "student": 2
+		}
+
+
+
+
+/////////////////////
+get student infos 
+ex : 
+
+http://127.0.0.1:8000/studentDetails/2/
+
+
+///////////////////// goup 
+
+GET http://127.0.0.1:8000/group/<int:pk>/
+
+
+reguest ; GET
+
+result : 
+		{
+		  "id": 1,
+		  "students": [
+		    {
+		      "id": 25,
+		      "modules": [],
+		      "user": 25,
+		      "group": 1
+		    },
+		    {
+		      "id": 26,
+		      "modules": [],
+		      "user": 26,
+		      "group": 1
+		    },
+		    {
+		      "id": 27,
+		      "modules": [],
+		      "user": 27,
+		      "group": 1
+		    }
+		  ],
+		  "group_num": 1
+		}
+
+
