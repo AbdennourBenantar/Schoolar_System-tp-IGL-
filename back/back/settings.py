@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'iglAPI',
     'rest_framework',
-    'rest_framework_swagger',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
