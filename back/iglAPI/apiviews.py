@@ -46,7 +46,9 @@ class UserCreateV2(APIView):  ## daaaanger i commented out the on save litner in
         student = Student(
             id=user.id,
             user = user,
-            group = Group.objects.get(pk=group)
+            group = Group.objects.get(pk=group),
+            email = email,
+            username = username
         )
         student.save()
         print(group)
@@ -91,6 +93,11 @@ class CreateModule(generics.CreateAPIView):
 class UpdateModule(generics.UpdateAPIView):
     serializer_class = ModuleSerilizer
     queryset = Module.objects.all()
+
+class deleteModule(generics.DestroyAPIView):
+    queryset = Module.objects.all()
+    serializer_class = ModuleSerilizer
+    
 
 ### return all groups each with his students  *
 class GroupList(generics.ListAPIView):
