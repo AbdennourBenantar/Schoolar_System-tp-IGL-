@@ -23,7 +23,8 @@ class Login extends Component {
     e.preventDefault();
     const userObject={
       username:this.state.name,
-      password:this.state.password
+      password:this.state.password,
+      email:"",
     };
     
      axios.post('http://127.0.0.1:8000/login/',userObject).then(res=>{
@@ -31,7 +32,7 @@ class Login extends Component {
        this.props.history.push('./admin');}
        else{
         this.props.history.push('./etudiant', {
-          state:{
+          appState:{
             user:res.data.id,
           }
         });

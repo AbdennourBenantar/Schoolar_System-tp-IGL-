@@ -13,6 +13,8 @@ class Group (models.Model):
         return self.group_num.__str__()
 
 class Student(models.Model):
+    email = models.CharField( max_length=100)
+    username = models.CharField( max_length=50)
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     group = models.ForeignKey(Group, related_name='students', on_delete=models.CASCADE,null = True,blank = True)
 

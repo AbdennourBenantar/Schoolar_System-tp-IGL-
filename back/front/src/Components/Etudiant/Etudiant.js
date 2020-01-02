@@ -95,6 +95,7 @@ var items = [
        },
    
   ];
+  var id;
 class Etudiant extends React.Component{  
   
     constructor(props){
@@ -114,9 +115,7 @@ class Etudiant extends React.Component{
               { title: 'Enseignant', field: 'teacher'},
               { title: 'Coefficient', field: 'coef', type: 'numeric'},
             ],
-            data: [
-              
-            ],
+            data: [],
           }
           this.handleCellSelection = this.handleCellSelection.bind(this)
           this.handleItemEdit = this.handleItemEdit.bind(this)
@@ -131,8 +130,9 @@ class Etudiant extends React.Component{
       handleRangeSelection(item){
         console.log('handleRangeSelection', item)
       }
-      componentWillMount(){
-        axios.get("http://127.0.0.1:8000/studentDetails/"+this.props.history.location.state.id+"/").then(res=>{
+      componentDidMount(){
+        id=this.props.history.location.state.appState.user;
+        axios.get("http://127.0.0.1:8000/studentDetails/"+id+"/").then(res=>{
           
           this.setState({
             data:res.data.modules,
@@ -140,6 +140,7 @@ class Etudiant extends React.Component{
         }).catch(err=>{})
       }
     render(){
+      
         return(
             <div className="Dash">
                 <BrowserRouter>
@@ -200,6 +201,15 @@ class Etudiant extends React.Component{
                                   this.setState(prevState => {
                                     const data = [...prevState.data];
                                     data.push(newData);
+                                    const datax={
+                                      coef: newData.coef,
+                                      name : newData.name,
+                                      teacher: newData.teacher,
+                                      student: this.props.history.location.state.appState.user,
+                                    }
+                                    axios.post('http://127.0.0.1:8000/createModule/',datax).then(res=>{
+
+                                    }).catch(error=>{});
                                     return { ...prevState, data };
                                   });
                                 }, 600);
@@ -212,6 +222,15 @@ class Etudiant extends React.Component{
                                   this.setState(prevState => {
                                     const data = [...prevState.data];
                                     data[data.indexOf(oldData)] = newData;
+                                    const datax={
+                                      coef: newData.coef,
+                                      name : newData.name,
+                                      teacher: newData.teacher,
+                                      student: this.props.history.location.state.appState.user,
+                                    }
+                                    axios.patch("http://127.0.0.1:8000/updateModule/31/",datax).then(res=>{
+
+                                    }).catch(error=>{});
                                     return { ...prevState, data };
                                   });
                                 }
