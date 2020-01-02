@@ -23,8 +23,7 @@ class Login extends Component {
     e.preventDefault();
     const userObject={
       username:this.state.name,
-      password:this.state.password,
-      email:"",
+      password:this.state.password, 
     };
     
      axios.post('http://127.0.0.1:8000/login/',userObject).then(res=>{
@@ -40,10 +39,6 @@ class Login extends Component {
      }).catch(err=>{
        console.log(err);
      }); 
-    
-    
-    
-    
     
   }
 

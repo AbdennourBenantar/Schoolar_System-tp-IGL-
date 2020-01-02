@@ -99,8 +99,12 @@ export default class Admin extends React.Component{
                                 setTimeout(() => {
                                   resolve();
                                   this.setState(prevState => {
+                                    
                                     const data = [...prevState.data];
                                     data.splice(data.indexOf(oldData), 1);
+                                    axios.delete("http://127.0.0.1:8000/userDetails/"+oldData.id+"/").then(res=>{
+
+                                    }).catch(error=>{});
                                     return { ...prevState, data };
                                   });
                                 }, 600);

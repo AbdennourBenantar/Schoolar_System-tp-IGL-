@@ -228,7 +228,7 @@ class Etudiant extends React.Component{
                                       teacher: newData.teacher,
                                       student: this.props.history.location.state.appState.user,
                                     }
-                                    axios.patch("http://127.0.0.1:8000/updateModule/31/",datax).then(res=>{
+                                    axios.patch("http://127.0.0.1:8000/updateModule/"+oldData.id+"/",datax).then(res=>{
 
                                     }).catch(error=>{});
                                     return { ...prevState, data };
@@ -243,6 +243,9 @@ class Etudiant extends React.Component{
                                   this.setState(prevState => {
                                     const data = [...prevState.data];
                                     data.splice(data.indexOf(oldData), 1);
+                                    axios.delete("http://127.0.0.1:8000/deleteModule/"+oldData.id+"/").then(res=>{
+
+                                    }).catch(error=>{});
                                     return { ...prevState, data };
                                   });
                                 }, 600);
