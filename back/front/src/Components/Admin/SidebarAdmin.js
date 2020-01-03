@@ -18,7 +18,7 @@ export default class Sidebar extends React.Component{
                     </div>
                     </Link>
                     <Link to="/studentsList">
-                    <div className="sidebar-Item">  
+                    <div id="Students-List" className="sidebar-Item">  
                         <FaList size="40"/>
                         <p>Liste des Etudiants</p>      
                     </div>

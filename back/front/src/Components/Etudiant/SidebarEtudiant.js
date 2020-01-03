@@ -24,7 +24,7 @@ export default class Sidebar extends React.Component{
                     </div>
                     </Link>
                     <Link to="/listeModules" >
-                    <div className="sidebar-Item">       
+                    <div id="Modules-List" className="sidebar-Item">       
                         <FaBook size="40"/>
                         <p>Liste des modules</p>        
                     </div>

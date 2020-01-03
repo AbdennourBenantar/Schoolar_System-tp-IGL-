@@ -51,7 +51,7 @@ class Login extends Component {
           <h3>Easy School</h3>
           <h2 className="active"> Sign In </h2>
 
-          <form onChange={this.onchange} onSubmit={this.log_submit}>
+          <form id="form" onChange={this.onchange} onSubmit={this.log_submit}>
             <input
               type="text"
               id="login"
